@@ -1,4 +1,5 @@
 import discord
+from discord.ext import commands
 from functions import sifre_olusturucu
 from functions import emoji_olusturucu
 from functions import yazi_tura
@@ -6,6 +7,15 @@ from functions import yazi_tura
 intents = discord.Intents.default()
 intents.message_content = True
 client = discord.Client(intents=intents)
+bot = commands.Bot(command_prefix='$', intents=intents)
+
+komutlar="""$merhaba: Bot selam verir.
+$bye: Bot gitmenize tepki olarak bir emoji gönderir.
+$sifre_olustur: Bot 15 karakter uzunluğunda rastgele bir şifre oluşturur.
+$random_emoji: Bot rastgele bir emoji gönderir.
+$yazi_tura: Bot yazı tura atar.
+"""
+
 
 @client.event
 async def on_ready():
@@ -25,6 +35,8 @@ async def on_message(message):
         await message.channel.send(emoji_olusturucu())
     elif message.content.startswith("$yazi_tura"):
         await message.channel.send(yazi_tura())
+    elif message.content.startswith("$yardim"):
+        await message.channel.send(komutlar)
     else:
         await message.channel.send(message.content)
 
