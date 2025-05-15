@@ -3,16 +3,13 @@ from functions import sifre_olusturucu
 from functions import emoji_olusturucu
 from functions import yazi_tura
 
-# ayricaliklar (intents) değişkeni botun ayrıcalıklarını depolayacak
 intents = discord.Intents.default()
-# Mesajları okuma ayrıcalığını etkinleştirelim
 intents.message_content = True
-# client (istemci) değişkeniyle bir bot oluşturalım ve ayrıcalıkları ona aktaralım
 client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
-    print(f'{client.user} olarak giriş yaptık.')
+    print(f'We logined as {client.user}')
 
 @client.event
 async def on_message(message):
